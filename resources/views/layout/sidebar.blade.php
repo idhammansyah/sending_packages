@@ -1,6 +1,6 @@
 @php
-    $user = session('user');
-    $role = $user->role ?? null;
+$user = session('user');
+$role = $user->role ?? null;
 @endphp
 
 <aside id="sidebar" class="sidebar">
@@ -8,69 +8,106 @@
 
         {{-- Menu untuk ADMIN --}}
         @if($role === 'admin')
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/orders/driver') }}">
-                    <i class="bi bi-truck"></i>
-                    <span>List Order Driver</span>
-                </a>
-            </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#components-nav-barang" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-box"></i><span>Barang</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="components-nav-barang" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a class="nav-link" href="{{ url('barang') }}">
+                        <i class="bi bi-box" style="font-size:12pt;"></i>
+                        <span>List Barang</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/orders/customer') }}">
-                    <i class="bi bi-people"></i>
-                    <span>List Order Customer</span>
-                </a>
-            </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-truck"></i><span>Driver</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a class="nav-link" href="{{ url('driver') }}">
+                        <i class="bi bi-plus" style="font-size:12pt;"></i>
+                        <span>Driver List</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{{ url('/orders/driver') }}">
+                        <i class="bi bi-truck" style="font-size:12pt;"></i>
+                        <span>List Order Driver</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/payments/unpaid') }}">
-                    <i class="bi bi-cash-stack"></i>
-                    <span>List Payment Belum Dibayar</span>
-                </a>
-            </li>
+        <!-- customer -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#components-nav-customer" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-people"></i><span>Customer</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="components-nav-customer" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a class="nav-link" href="{{ url('/customer') }}">
+                        <i class="bi bi-table" style="font-size:12pt;"></i>
+                        <span>Customer List</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{{ url('/orders/driver') }}">
+                        <i class="bi bi-truck" style="font-size:12pt;"></i>
+                        <span>List Order Customer</span>
+                    </a>
+                </li>
+              </ul>
+        </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/orders/status') }}">
-                    <i class="bi bi-clipboard-check"></i>
-                    <span>Status Order</span>
-                </a>
-            </li>
         @endif
 
         @if($role === 'customer')
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/orders/driver') }}">
-                    <i class="bi bi-truck"></i>
-                    <span>List Order</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/payments/unpaid') }}">
-                    <i class="bi bi-cash-stack"></i>
-                    <span>Payment</span>
-                </a>
-            </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#components-nav-customer" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-people"></i><span>Customer</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="components-nav-customer" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a class="nav-link" href="{{ url('/customer') }}">
+                        <i class="bi bi-table" style="font-size:12pt;"></i>
+                        <span>Customer List</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{{ url('/orders') }}">
+                        <i class="bi bi-truck" style="font-size:12pt;"></i>
+                        <span>List Order Customer</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
         @endif
 
         @if($role === 'driver')
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/orders/driver') }}">
-                    <i class="bi bi-truck"></i>
-                    <span>List Order</span>
-                </a>
-            </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-truck"></i><span>Driver</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a class="nav-link" href="{{ url('/driver') }}">
+                        <i class="bi bi-plus" style="font-size:12pt;"></i>
+                        <span>Driver List</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{{ url('/orders/driver') }}">
+                        <i class="bi bi-truck" style="font-size:12pt;"></i>
+                        <span>List Order Driver</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
         @endif
 
-        {{-- Tombol Logout --}}
-        <li class="nav-item">
-            <form action="{{ route('logout') }}" method="POST" style="display:inline;">
-                @csrf
-                <button type="submit" class="nav-link text-danger" style="border:none;background:none;">
-                    <i class="bi bi-box-arrow-right"></i>
-                    <span>Logout</span>
-                </button>
-            </form>
-        </li>
     </ul>
 </aside>
