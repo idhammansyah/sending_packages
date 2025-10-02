@@ -1,0 +1,7 @@
+This project created by Idham Mansyah Awwalu for test case recruitment.
+
+If you wanna run this project, please read this below :
+1. Before you run this program, open the command line, and run composer install
+2. after that, you must import the DB in folder "DB Import", and you'll see the format .sql with name sending_package
+3. After that, you must check the .env first
+4. Please run with php artisan serve
