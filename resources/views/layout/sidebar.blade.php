@@ -55,7 +55,7 @@ $role = $user->role ?? null;
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link" href="{{ url('/orders/driver') }}">
+                    <a class="nav-link" href="{{ url('/customer-order') }}">
                         <i class="bi bi-truck" style="font-size:12pt;"></i>
                         <span>List Order Customer</span>
                     </a>
@@ -78,7 +78,7 @@ $role = $user->role ?? null;
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link" href="{{ url('/orders') }}">
+                    <a class="nav-link" href="{{ url('/customer-order') }}">
                         <i class="bi bi-truck" style="font-size:12pt;"></i>
                         <span>List Order Customer</span>
                     </a>
@@ -100,7 +100,7 @@ $role = $user->role ?? null;
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link" href="{{ url('/orders/driver') }}">
+                    <a class="nav-link" href="{{ url('/orders') }}">
                         <i class="bi bi-truck" style="font-size:12pt;"></i>
                         <span>List Order Driver</span>
                     </a>

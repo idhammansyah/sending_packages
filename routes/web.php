@@ -6,7 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\CustomerController;
-
+use App\Http\Controllers\OrderList;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -36,3 +36,6 @@ Route::post('/customer/store', [CustomerController::class, 'store'])->name('cust
 Route::put('/customer/update/{id}', [CustomerController::class, 'update'])->name('customer.update');
 Route::delete('/customer/delete/{id}', [CustomerController::class, 'destroy'])->name('customer.destroy');
 
+Route::get('/customer-order', [OrderList::class, 'index'])->name('order');
+Route::post('/order', [OrderList::class, 'store'])->name('order.store');
+Route::post('/order/payment', [OrderList::class, 'payment'])->name('order.payment');

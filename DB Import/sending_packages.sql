@@ -25,7 +25,7 @@ CREATE TABLE `cache` (
 
 /*Data for the table `cache` */
 
-insert  into `cache`(`key`,`value`,`expiration`) values ('laravel-cache-1Wes4lV0PZuuRC3X','s:7:\"forever\";',2074690228),('laravel-cache-QsQC9FBSV6zSPQQZ','s:7:\"forever\";',2074689806),('laravel-cache-sIzidtc7tpmthVsc','s:7:\"forever\";',2074689772),('laravel-cache-W7JB3vnIrBBbxZTo','s:7:\"forever\";',2074689500);
+insert  into `cache`(`key`,`value`,`expiration`) values ('laravel-cache-1Wes4lV0PZuuRC3X','s:7:\"forever\";',2074690228),('laravel-cache-QsQC9FBSV6zSPQQZ','s:7:\"forever\";',2074689806),('laravel-cache-sIzidtc7tpmthVsc','s:7:\"forever\";',2074689772),('laravel-cache-uzOs6hTYT1Xs0Rtt','s:7:\"forever\";',2074751809),('laravel-cache-W7JB3vnIrBBbxZTo','s:7:\"forever\";',2074689500);
 
 /*Table structure for table `cache_locks` */
 
@@ -98,7 +98,7 @@ CREATE TABLE `jwt_token_user` (
   `place_added` text,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `jwt_token_user` */
 
@@ -142,6 +142,46 @@ CREATE TABLE `sessions` (
 
 /*Data for the table `sessions` */
 
+/*Table structure for table `tbl_barang` */
+
+CREATE TABLE `tbl_barang` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nama_barang` varchar(255) DEFAULT NULL,
+  `kategori` varchar(255) DEFAULT NULL,
+  `harga` double DEFAULT NULL,
+  `is_deleted` int DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `created_by` varchar(255) DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `updated_by` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+/*Data for the table `tbl_barang` */
+
+insert  into `tbl_barang`(`id`,`nama_barang`,`kategori`,`harga`,`is_deleted`,`created_at`,`created_by`,`updated_at`,`updated_by`) values (2,'Pulpen','ATK',10000,NULL,'2025-10-02 07:35:28',NULL,'2025-10-02 07:35:28',NULL),(5,'Kertas HVS','ATK',50000,NULL,'2025-10-02 07:58:12',NULL,'2025-10-02 08:00:24',NULL),(6,'Kertas A4','ATK',50000,NULL,'2025-10-02 07:59:19',NULL,'2025-10-02 07:59:19',NULL);
+
+/*Table structure for table `tbl_transaction` */
+
+CREATE TABLE `tbl_transaction` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `id_driver` int DEFAULT NULL,
+  `id_barang` text,
+  `status_transaction` varchar(255) DEFAULT NULL,
+  `status_payment` varchar(255) DEFAULT NULL,
+  `total_pembayaran` double(16,2) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `created_by` varchar(255) DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `updated_by` varchar(255) DEFAULT NULL,
+  `is_deleted` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+/*Data for the table `tbl_transaction` */
+
+insert  into `tbl_transaction`(`id`,`id_driver`,`id_barang`,`status_transaction`,`status_payment`,`total_pembayaran`,`created_at`,`created_by`,`updated_at`,`updated_by`,`is_deleted`) values (1,NULL,'2,5,6',NULL,'sudah dibayar',110000.00,'2025-10-03 03:11:34','2','2025-10-03 03:12:40',NULL,0);
+
 /*Table structure for table `users` */
 
 CREATE TABLE `users` (
@@ -156,11 +196,11 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `users` */
 
-insert  into `users`(`id`,`name`,`email`,`email_verified_at`,`role`,`password`,`remember_token`,`created_at`,`updated_at`) values (1,'riska oktaviani','riskuy19@gmail.com',NULL,'customer','$2y$12$3QqNQLNNeNrgGv0RXkW7reA5Kf6p4xDgG4Nm6WZPcve48X9IOYt66',NULL,'2025-10-01 15:35:14','2025-10-01 15:35:14'),(2,'idham mansyah','mansyahidham@gmail.com',NULL,'admin','$2y$12$RGhb8I3nkBkt0fi6igj47ew/5/DVeutQpLos3Po9VLsC/t6P57ob2',NULL,'2025-10-01 15:35:27','2025-10-01 15:35:27'),(3,'Said','said@gmail.com',NULL,'driver','$2y$12$C.2gOTqMi5/y4cXZqFJ/eOJ0fjIKaUw9hoyV.pVZMkoL0re3nmqfe',NULL,'2025-10-01 15:57:04','2025-10-01 15:57:04');
+insert  into `users`(`id`,`name`,`email`,`email_verified_at`,`role`,`password`,`remember_token`,`created_at`,`updated_at`) values (1,'riska oktaviani','riskuy19@gmail.com',NULL,'customer','$2y$12$RGhb8I3nkBkt0fi6igj47ew/5/DVeutQpLos3Po9VLsC/t6P57ob2',NULL,'2025-10-01 15:35:14','2025-10-01 15:35:14'),(2,'idham mansyah','mansyahidham@gmail.com',NULL,'admin','$2y$12$RGhb8I3nkBkt0fi6igj47ew/5/DVeutQpLos3Po9VLsC/t6P57ob2',NULL,'2025-10-01 15:35:27','2025-10-01 15:35:27'),(3,'Said','said@gmail.com',NULL,'driver','$2y$12$C.2gOTqMi5/y4cXZqFJ/eOJ0fjIKaUw9hoyV.pVZMkoL0re3nmqfe',NULL,'2025-10-01 15:57:04','2025-10-01 15:57:04'),(4,'Ammar N','ammarn@gmail.com',NULL,'driver','$2y$12$z6J4LFX0xi5aorVSCO.cUevqyI/K8HsJ.Yd8dRE8JHSwxCaBeyPmS',NULL,'2025-10-02 08:12:21','2025-10-02 08:19:58'),(5,'Rahma Wanti','rahma@gmail.com',NULL,'driver','$2y$12$wPY.Ls9lrcQ80X7oweu3.OLrxm9dHkNAw/ITXl/iPe8JFySb1Ecpm',NULL,'2025-10-02 08:13:15','2025-10-02 08:13:15'),(7,'abdul faqih','faqih@gmail.com',NULL,'customer','$2y$12$aXPFLyAoE4UCPzljW4geneva.yU..14/n7Iq8me4lTtwkULpbuvUS',NULL,'2025-10-02 09:49:27','2025-10-02 09:49:27');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
